@@ -1,4 +1,9 @@
-import mysql from 'mysql';
+import Sequelize from 'sequelize';
+
+import User from './../models/User';
+import databaseConfig from '../config/database';
+
+const models = [ User ];
 
 class Database {
     constructor() {
@@ -6,13 +11,12 @@ class Database {
     }
 
     init() {
-        this.connection = mysql.createConnection({
-            host: process.env.MYSQL_HOST,
-            user: process.env.MYSQL_USER,
-            password: process.env.MYSQL_PASSWORD,
-            database: process.env.MYSQL_DATABASE
-        });
+        this.connection = new Sequelize(databaseConfig);
+
+        models
+            .map(model => model.init(this.connection))
+            .map(model => model.associate && model.associate(this.connection.models));
     }
 }
 
-export default new Database().connection.connect();
+export default new Database();
