@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Content, Wrapper } from '../../styles/sign';
 import api from './../../services/api';
+import { FaSpinner } from 'react-icons/fa';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');

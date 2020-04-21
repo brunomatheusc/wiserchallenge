@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
+import { rotate } from './global';
 
 export const Wrapper = styled.div`
     height: 100%;
