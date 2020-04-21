@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
@@ -53,6 +53,14 @@ export const Content = styled.div`
             border-radius: 4px;
             font-size: 16px;
             transition: background 0.2s;
+
+            ${props => props.loading && 
+            css`
+                svg {
+                    animation: ${rotate} 2s linear infinite;
+                }
+            `}
+
 
             &:hover {
                 background: ${darken(0.03, '#3a3a3a')};

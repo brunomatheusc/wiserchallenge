@@ -7,6 +7,7 @@ import api from './../../services/api';
 export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function handleSubmit() {
         try {
@@ -15,6 +16,8 @@ export default function SignIn() {
         } catch (error) {
             alert('Erro ao executar operação');
         }
+
+        setLoading(true);
     }
 
     return (
@@ -25,7 +28,12 @@ export default function SignIn() {
                         <input name="email" type="email" onChange={ e => setEmail(e.target.value) } placeholder="Seu e-mail" autoComplete="off" />
                         <input name="password" type="password" onChange={ e => setPassword(e.target.value) } placeholder="Sua senha secreta" autoComplete="new-password" />
 
-                        <button type="submit">Acessar</button>
+                        <button type="submit" loading={ loading }>
+                        { loading 
+                            ? <FaSpinner color="#fff" />
+                            : "Acessar"
+                        }
+                        </button>
 
                         <Link to="/register">Criar conta gratuita</Link>
                     </form>

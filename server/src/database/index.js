@@ -11,16 +11,12 @@ class Database {
     }
 
     init() {
+        // Cria a conexão com o banco de dados de acordo com o arquivo de config
         this.connection = new Sequelize(databaseConfig);
 
-        this.connection.authenticate()
-        .then(() => {
-            console.log("Conectado com sucesso");
-        })
-        .catch((error) => {
-            console.log("Erro ao conectar");
-            console.log(error);
-        });
+        // Faz o bind dos models para estabelecer a conexão
+        models
+            .map(model => model.init(this.connection));
     }
 }
 

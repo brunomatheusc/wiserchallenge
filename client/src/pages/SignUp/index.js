@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaSpinner } from 'react-icons/fa';
-import logo from '../../assets/logo-wiser.png';
 
 import { Content, Wrapper } from '../../styles/sign';
 import api from './../../services/api';
