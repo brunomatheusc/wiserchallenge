@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import User from './../../models/User';
 
 class SessionControler {
     async store(req, res) {
@@ -13,6 +14,12 @@ class SessionControler {
         }
 
         const { email, password } = req.body;
+
+        const user = User.findOne({
+            where: { email }
+        });
+
+        console.log(user);
 
         return res.json({ email });
     }

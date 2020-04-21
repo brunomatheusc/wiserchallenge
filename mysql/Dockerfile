@@ -2,3 +2,5 @@ FROM mysql
 ENV MYSQL_ROOT_PASSWORD=20wiser20
 
 WORKDIR /usr/data
+
+EXPOSE 3306
