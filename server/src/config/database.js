@@ -10,7 +10,7 @@ module.exports = {
     //     connectTimeout: 60000      
     // }
     dialect: 'postgres',
-    host: "192.168.99.100",
+    host: '192.168.99.100',
     username: "postgres",
     password: "20wiser20",
     database: "wiserchallenge",
