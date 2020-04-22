@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Content, Wrapper } from '../../styles/sign';
 import api from './../../services/api';
+import history from './../../services/history';
 import { FaSpinner } from 'react-icons/fa';
 
 export default function SignIn() {
@@ -10,15 +11,25 @@ export default function SignIn() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    async function handleSubmit() {
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setLoading(true);
+
         try {
             const response = await api.post('/session', { email, password });
-            console.log(response);
+
+            if (response.status == 200) {
+                const { token } = response.data;
+                api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
+                localStorage.setItem('token', response.data.token);
+                setLoading(false);
+                history.push('/');
+            }
         } catch (error) {
             alert('Erro ao executar operação');
+            setLoading(false);
         }
-
-        setLoading(true);
     }
 
     return (

@@ -1,9 +1,19 @@
 import * as Yup from 'yup';
-import User from './../../models/User';
+import User from '../models/User';
 
 class UserController {
     async index (req, res) {
+        try {
+            const { authorization } = req.headers;
 
+            const user = await User.findOne({ where: { id: req.userId }})
+
+            const { id, name, email } = user;
+
+            return res.json({ id, name, email });
+        } catch (error) {
+            return res.status(400).json({ error: true });
+        }
     }
 
     async store (req, res) {
@@ -29,7 +39,6 @@ class UserController {
             const user = await User.create({ name, email, password });
             return res.json(user);
         } catch (error) {
-            console.log(error);            
             return res.status(500).json({ error: true });
         }        
     }
