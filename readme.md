@@ -25,8 +25,8 @@ Ao realizar uma consulta a api, é validado o envio do token devolvido na autent
 
 #### Clonando o projeto
 ```
-git clone https://github.com/brunomatheusc/matrixcargo
-cd matrixcargo
+git clone https://github.com/brunomatheusc/wiserchallenge
+cd wiserchallenge
 
 ```
 #### Executando Backend
@@ -37,7 +37,7 @@ yarn dev
 ```
 #### Executando Frontend
 ```
-cd frontend
+cd client
 yarn
 yarn start
 ```
