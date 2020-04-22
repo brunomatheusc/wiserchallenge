@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { Content, Wrapper } from '../../styles/sign';
 import api from './../../services/api';
@@ -27,7 +28,8 @@ export default function SignIn() {
                 history.push('/');
             }
         } catch (error) {
-            alert('Erro ao executar operação');
+            toast.error('Falha no cadastro, verifique seus dados!');
+            // alert('Erro ao executar operação');
             setLoading(false);
         }
     }

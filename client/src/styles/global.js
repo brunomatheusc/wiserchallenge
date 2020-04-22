@@ -1,6 +1,5 @@
 import { createGlobalStyle, keyframes, css } from 'styled-components';
-// import 'react-toastify/dist/ReactToastify.css';
-// import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const rotate = keyframes`
     from {

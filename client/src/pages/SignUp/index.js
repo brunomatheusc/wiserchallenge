@@ -5,6 +5,7 @@ import { FaSpinner } from 'react-icons/fa';
 
 import { Content, Wrapper } from '../../styles/sign';
 import api from './../../services/api';
+import { toast } from 'react-toastify';
 
 export default function SignUp() {
     const [name, setName] = useState('');
@@ -14,9 +15,10 @@ export default function SignUp() {
     async function handleSubmit() {
         try {
             const response = await api.post('/user', { name, email, password });
-            console.log(response);
+
+            toast.success("Usuário criado com sucesso!");            
         } catch (error) {
-            alert('Erro ao executar operação');
+            toast.error("Falha ao executar operação. Verifique os dados e tente novamente");
         }
     }
 
