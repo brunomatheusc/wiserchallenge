@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Content, Wrapper } from '../../styles/sign';
 import api from './../../services/api';
-import history from './../../services/history';
 import { FaSpinner } from 'react-icons/fa';
 
 export default function SignIn() {
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
